@@ -4,6 +4,4 @@ Build a Retro Arcade Game with AI and Get Rewarded for Shipping It
 
 Stack: HTML, CSS and JS
 
-Made and Maintained by @Hridhaan Sahay
-
 Sponsored by Jared
