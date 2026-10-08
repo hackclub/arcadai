@@ -10,7 +10,7 @@ Build a game with AI. Make it yours. Ship it, get rewarded.
 2. **Your own edits, no AI.** Open the code and change it by hand: at least five improvements. Submit a screenshot and the list.
 3. **Your own features, in JavaScript.** Write new code that changes how the game plays. AI can explain, you write.
 
-Then ship it on GitHub Pages and submit the repo, the live link, a screenshot, and a few things you learned.
+Then ship it on GitHub Pages and hand in the repo, the live link, a screenshot, and a few things you learned through the club workshop. ArcadAI runs through clubs only.
 
 ## Editing the site
 
@@ -26,6 +26,6 @@ There is no build step. Open `index.html` in a browser, or run `python -m http.s
 
 A few things carried over from the previous site that need checking (they are also marked with `TODO` comments in `index.html`):
 
-- The workshop form (`forms.hackclub.com/host-arcadai-workshop`) and the individual submission form (`forms.hackclub.com/arcadai-individual`) returned 404 when this site was built.
+- The workshop form (`forms.hackclub.com/host-arcadai-workshop`) returned 404 when this site was built.
 - The requirements (ages 13 to 18, 1 hour on Hackatime, one submission each) and the Slack channel link are from the previous round.
 - The example games are previous submissions.
