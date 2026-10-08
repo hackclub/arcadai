@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ArcadAI</title>
+  <meta name="description" content="ArcadAI is a Hack Club program for building your first game in plain HTML, CSS and JavaScript. An AI writes the first version, you make it yours, then you ship it and get rewarded.">
+  <meta name="theme-color" content="#0f0d1a">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ArcadAI">
+  <meta property="og:description" content="Build your first game with AI, then make it yours. A three-step Hack Club program in HTML, CSS and JavaScript.">
+  <meta property="og:image" content="https://arcadai.hackclub.com/assets/og-image.jpg">
+  <meta property="og:url" content="https://arcadai.hackclub.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Outfit:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<header class="site-nav">
+  <div class="container nav-inner">
+    <a class="flag" href="https://hackclub.com/" aria-label="Hack Club"><img src="assets/flag-orpheus-top.svg" alt="" width="280" height="158"></a>
+    <a class="brand" href="#top">ARCAD<span>AI</span></a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+      <span class="visually-hidden">Menu</span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <nav class="nav-links" id="nav-links" aria-label="Site">
+      <a href="#how">How it works</a>
+      <a href="#why-ai">Why AI?</a>
+      <a href="#rules">Rules</a>
+      <a href="#clubs">Clubs</a>
+      <a href="#examples">Examples</a>
+      <a href="https://www.canva.com/design/DAHLJIkIras/yFGuUKuNm_g_faqWocFEzg/view" target="_blank" rel="noopener noreferrer">Guide ↗</a>
+      <a class="btn btn-ghost btn-sm" href="https://hackclub.com/slack/" target="_blank" rel="noopener noreferrer">Join the Slack</a>
+      <a class="btn btn-primary btn-sm" href="#step-1">Start building</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">A Hack Club program · HTML + CSS + JS</p>
+        <img class="hero-logo" src="assets/arcadai-logo.webp" alt="ArcadAI" width="1000" height="620">
+        <h1>Build your first game with AI. Then make it yours.</h1>
+        <p class="lede">ArcadAI is a three-step program for making a retro arcade game in plain HTML, CSS and JavaScript. An AI writes the first version. You do everything after that. Ship it and get rewarded.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#step-1">Start with step 1</a>
+          <a class="btn btn-ghost" href="#clubs">Run it at your club</a>
+        </div>
+        <ul class="hero-facts">
+          <li>No experience needed</li>
+          <li>Teens, anywhere in the world</li>
+          <li>Solo or with your club</li>
+        </ul>
+      </div>
+
+      <div class="hero-demo">
+        <div class="cabinet">
+          <div class="cabinet-marquee">
+            <span>Orpheus Run</span>
+            <span class="marquee-coin">Insert coin</span>
+          </div>
+          <div class="cabinet-screen">
+            <canvas id="game" width="480" height="270" tabindex="0" role="application" aria-label="Orpheus Run, a tiny jumping game. Press space or tap to jump over the bugs."></canvas>
+            <div class="scanlines" aria-hidden="true"></div>
+          </div>
+          <div class="cabinet-deck">
+            <p class="deck-readout" id="game-readout" aria-live="polite">Press space or tap to play</p>
+            <div class="deck-controls">
+              <span class="deck-hint">Space · ↑ · tap = jump</span>
+              <button class="deck-btn" id="game-start" type="button">Play</button>
+            </div>
+          </div>
+        </div>
+        <p class="cabinet-caption">This demo is plain JavaScript drawing on a <code>&lt;canvas&gt;</code>, no libraries. It lives in <a href="https://github.com/hackclub/arcadai/blob/main/script.js" target="_blank" rel="noopener noreferrer">script.js</a>. Read it, steal from it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="how" id="how">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>Three steps from a prompt to a playable game.</h2>
+        <p>Each step has one job and one thing to hand in. The AI's role shrinks as you go: it writes the first version, then it's your turn.</p>
+      </div>
+
+      <div class="step-cards">
+        <a class="step-card" href="#step-1">
+          <span class="num" aria-hidden="true">1</span>
+          <h3>Your AI prompt</h3>
+          <p>Describe the game you want and let an AI tool write the first version. The goal is a playable prototype. Rough is fine.</p>
+          <span class="ai-tag ai-on">AI writes the code</span>
+        </a>
+        <a class="step-card" href="#step-2">
+          <span class="num" aria-hidden="true">2</span>
+          <h3>Your own edits, no AI</h3>
+          <p>Open the code and change it by hand: colours, speed, text, art, a new character. At least five improvements.</p>
+          <span class="ai-tag ai-off">AI switched off</span>
+        </a>
+        <a class="step-card" href="#step-3">
+          <span class="num" aria-hidden="true">3</span>
+          <h3>Your own features, in JavaScript</h3>
+          <p>Write new code that changes how the game plays: a power-up, a high score, levels, sound. Your ideas, your code.</p>
+          <span class="ai-tag ai-explain">AI explains, you write</span>
+        </a>
+      </div>
+
+      <div class="ship-bar">
+        <div>
+          <p class="eyebrow">Then ship it</p>
+          <p class="ship-bar-text">Put the game on GitHub Pages, submit the link, and get rewarded.</p>
+        </div>
+        <a class="btn btn-ghost" href="#ship">How to ship</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STEP 1 ============ -->
+  <section class="step" id="step-1">
+    <span class="step-bg" aria-hidden="true">1</span>
+    <div class="container">
+      <div class="step-head">
+        <span class="step-badge" aria-hidden="true">1</span>
+        <div>
+          <p class="eyebrow">Step 1 · AI allowed</p>
+          <h2>Your AI prompt</h2>
+          <p class="lede">This is where your game begins. Use your favourite AI tool to create the first version of your game. Don't worry if it's rough, and it doesn't need to be online yet.</p>
+        </div>
+      </div>
+
+      <div class="step-grid">
+        <div class="panel">
+          <h3>Do this</h3>
+          <ol class="do-list">
+            <li><strong>Pick a classic.</strong> Pong, Snake, Breakout, Space Invaders, Flappy Bird, a dodge game. Small games make the best first games.</li>
+            <li><strong>Write the prompt.</strong> Ask for one file, <code>index.html</code>, with the CSS and JavaScript inside it, and ask for comments so you can read the code later. Start from the prompt below.</li>
+            <li><strong>Run it.</strong> Save the code as <code>index.html</code> and open it in your browser. Play it.</li>
+            <li><strong>Fix it with the AI.</strong> Broken? Paste the error message, or describe what's wrong, and ask for a fix. Repeat until it plays.</li>
+            <li><strong>Track your time.</strong> Set up <a href="https://hackatime.hackclub.com/" target="_blank" rel="noopener noreferrer">Hackatime</a> before you start so your hours count.</li>
+          </ol>
+        </div>
+
+        <div class="panel panel-submit">
+          <h3>Submit</h3>
+          <ul class="check-list">
+            <li>The prompt you used</li>
+            <li>Which AI you used</li>
+            <li>A screenshot of your game running</li>
+          </ul>
+          <p class="submit-goal">Your goal is to create a playable prototype.</p>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-bar">
+            <span>Starter prompt · change the parts in yellow</span>
+            <button class="btn btn-ghost btn-xs" type="button" data-copy="starter-prompt">Copy prompt</button>
+          </div>
+<pre id="starter-prompt">Make me a simple arcade game called <span class="fill">[GAME NAME]</span> in ONE file, index.html, using only HTML, CSS and plain JavaScript. No libraries, no build tools.
+
+The game: <span class="fill">[the player is a spaceship dodging asteroids that fall from the top of the screen]</span>.
+Controls: arrow keys on desktop, tap or drag on phones.
+It needs a start screen, a score, and a game-over screen with a restart button.
+
+Keep the code short and readable, and add comments explaining what each part does so I can edit it myself later.</pre>
+        </div>
+
+        <p class="step-note">Any AI tool works: ChatGPT, Claude, Gemini, Copilot, or whatever you already use. Write down which one. You'll need it for the submission.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STEP 2 ============ -->
+  <section class="step" id="step-2">
+    <span class="step-bg" aria-hidden="true">2</span>
+    <div class="container">
+      <div class="step-head">
+        <span class="step-badge" aria-hidden="true">2</span>
+        <div>
+          <p class="eyebrow">Step 2 · No AI</p>
+          <h2>Your own edits, no AI</h2>
+          <p class="lede">Now it's time to make your game yours. Close the AI tab, open <code>index.html</code> in a code editor, and change things by hand. This is where you add the human touch.</p>
+        </div>
+      </div>
+
+      <div class="step-grid">
+        <div class="panel">
+          <h3>The loop</h3>
+          <p class="loop"><span>Find a value</span><i>›</i><span>Change it</span><i>›</i><span>Save</span><i>›</i><span>Refresh</span><i>›</i><span>Repeat</span></p>
+          <p>Most of a game is numbers and words sitting in plain sight. You don't need to understand every line to change the ones that matter. Three edits, straight from a step-1 game:</p>
+<pre class="code"><span class="del">- const speed = 3;            // how fast the asteroids fall</span>
+<span class="add">+ const speed = 6;            // twice as scary</span>
+<span class="del">- ctx.fillStyle = "white";</span>
+<span class="add">+ ctx.fillStyle = "#ec3750";  // Hack Club red</span>
+<span class="del">- &lt;h1&gt;Asteroid Dodge&lt;/h1&gt;</span>
+<span class="add">+ &lt;h1&gt;Orpheus: Space Panic&lt;/h1&gt;</span></pre>
+          <p>Not sure what a line does? Read the comment next to it, change it anyway, and see what breaks. If you're really stuck, ask a human in the <a href="https://hackclub.enterprise.slack.com/archives/C0B72VAHXHB" target="_blank" rel="noopener noreferrer">Slack channel</a>. Not the AI. Not yet.</p>
+        </div>
+
+        <div class="panel panel-submit">
+          <h3>Submit</h3>
+          <ul class="check-list">
+            <li>An updated screenshot</li>
+            <li>A list of your upgrades (at least 5)</li>
+          </ul>
+          <p class="submit-goal">This is where you add the human touch.</p>
+        </div>
+
+        <div class="span-all">
+          <h3 class="ideas-title">Upgrade ideas · pick at least five</h3>
+          <ul class="ideas">
+            <li>New colours and fonts</li>
+            <li>Rename the game and rewrite every bit of text</li>
+            <li>Tune the speed, gravity, sizes and spawn rate</li>
+            <li>Draw a new character or better art</li>
+            <li>Add a background</li>
+            <li>Improve the UI: start screen, buttons, layout</li>
+            <li>Add a story: who is the player, and why?</li>
+            <li>Make a harder second level by changing values</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STEP 3 ============ -->
+  <section class="step" id="step-3">
+    <span class="step-bg" aria-hidden="true">3</span>
+    <div class="container">
+      <div class="step-head">
+        <span class="step-badge" aria-hidden="true">3</span>
+        <div>
+          <p class="eyebrow">Step 3 · Your code</p>
+          <h2>Your own features, in JavaScript</h2>
+          <p class="lede">Edits change how the game looks. Features change how it plays. Pick one or two from the list, or invent your own, and write the JavaScript yourself. You can ask an AI to explain a concept, but the code that goes in is yours.</p>
+        </div>
+      </div>
+
+      <div class="step-grid">
+        <div class="panel">
+          <h3>Example · a high score that survives a refresh</h3>
+          <p>About ten lines, and your game suddenly has a reason to play again.</p>
+<pre class="code">// Load the best score (or 0 the first time)
+let best = Number(localStorage.getItem("best")) || 0;
+
+function gameOver() {
+  if (score &gt; best) {
+    best = score;
+    localStorage.setItem("best", best);  // remember it
+  }
+  showGameOverScreen(score, best);
+}</pre>
+          <p>Every feature has the same shape: keep track of something (a variable), change it when something happens (an event), and show it (draw it). That's most of game programming.</p>
+        </div>
+
+        <div class="panel panel-submit">
+          <h3>Submit</h3>
+          <ul class="check-list">
+            <li>What you added, in your own words</li>
+            <li>A screenshot or short clip of it working</li>
+          </ul>
+          <p class="submit-goal">Your ideas, your code.</p>
+        </div>
+
+        <div class="span-all">
+          <h3 class="ideas-title">Feature ideas</h3>
+          <ul class="ideas">
+            <li>High score saved with <code>localStorage</code></li>
+            <li>A power-up: shield, slow motion, double points</li>
+            <li>Difficulty that ramps up over time</li>
+            <li>Lives, or a health bar</li>
+            <li>Sound effects with the <code>Audio</code> API</li>
+            <li>A second enemy with its own movement</li>
+            <li>Pause with the P key</li>
+            <li>A combo multiplier</li>
+            <li>Levels, or a boss</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHIP IT ============ -->
+  <section class="ship" id="ship">
+    <div class="container ship-grid">
+      <div>
+        <p class="eyebrow">Final · Ship it</p>
+        <h2>Put it online and submit</h2>
+        <p class="lede">Time to ship your game. Publish it online, share what you've built, and get rewarded.</p>
+
+        <div class="ship-cols">
+          <div class="panel">
+            <h3>GitHub Pages in four moves</h3>
+            <ol class="do-list">
+              <li>Create a public repository on GitHub and upload <code>index.html</code>, plus any images or sounds.</li>
+              <li>Open <strong>Settings → Pages</strong>, choose the <strong>main</strong> branch, and save.</li>
+              <li>Wait a minute. Your game is live at <code>username.github.io/repo-name</code>.</li>
+              <li>Open it on your phone and play it once. If it works there, it works.</li>
+            </ol>
+          </div>
+          <div class="panel panel-submit">
+            <h3>Submit</h3>
+            <ul class="check-list">
+              <li>GitHub repository</li>
+              <li>Live game URL</li>
+              <li>Final screenshot</li>
+              <li>A few things you learned</li>
+            </ul>
+            <!-- TODO: confirm the submission form. forms.hackclub.com/arcadai-individual returned 404 on 2026-10-08. -->
+            <a class="btn btn-primary" href="https://forms.hackclub.com/arcadai-individual" target="_blank" rel="noopener noreferrer">Submit your game</a>
+          </div>
+        </div>
+      </div>
+
+      <figure class="ship-art">
+        <img src="assets/orpheus-trophy.webp" alt="Orpheus the dinosaur holding up a trophy, confetti everywhere" width="900" height="808" loading="lazy">
+        <figcaption class="congrats">Congratulations.<br>Your game is now live for others to play.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ WHY AI ============ -->
+  <section class="why" id="why-ai">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Using AI?</p>
+        <h2>Why are we using AI?</h2>
+        <p>Games can take weeks to build from scratch. And AI is a great tool to learn if used in the right way. So for ArcadAI, we want to encourage participants to use AI to build the first version of their game, then improve it with their own ideas and creativity. AI helps you learn in this and makes the process a bit faster so you can focus on experimenting, creating, and making something uniquely yours (aka your own first game).</p>
+      </div>
+
+      <blockquote class="quote">AI helps you build the first version.<br><strong>You build the final game.</strong></blockquote>
+
+      <div class="why-grid">
+        <div class="panel">
+          <h3>AI helps with</h3>
+          <ul class="dot-list">
+            <li>Creating a prototype</li>
+            <li>Writing code</li>
+            <li>Fixing bugs</li>
+            <li>Adding features</li>
+            <li>Explaining concepts</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>You focus on</h3>
+          <ul class="dot-list">
+            <li>Coming up with ideas</li>
+            <li>Testing your game</li>
+            <li>Improving the design</li>
+            <li>Making it fun</li>
+            <li>Adding personality</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="quote quote-end">AI can generate code.<br><strong>It can't generate your creativity.</strong></p>
+    </div>
+  </section>
+
+  <!-- ============ RULES ============ -->
+  <section class="rules" id="rules">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Rules &amp; guidelines</p>
+        <h2>What you need to take part.</h2>
+      </div>
+      <!-- Requirements and checklist carried over from the previous ArcadAI site. Confirm before launch. -->
+      <div class="rules-grid">
+        <div class="panel">
+          <h3>Requirements</h3>
+          <ul class="dot-list">
+            <li>Be between <strong>13 and 18</strong> years old.</li>
+            <li>Not be banned from <strong>Hackatime</strong>.</li>
+            <li>Track at least <strong>1 hour</strong> of work.</li>
+            <li>Your submission must be your own work.</li>
+            <li>One submission per participant.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Submission checklist</h3>
+          <ul class="check-list">
+            <li>Join the <a href="https://hackclub.com/slack/" target="_blank" rel="noopener noreferrer">Hack Club Slack</a></li>
+            <li>Verify your identity with Hack Club Auth</li>
+            <li>Track your coding time with <a href="https://hackatime.hackclub.com/" target="_blank" rel="noopener noreferrer">Hackatime</a></li>
+            <li>Host your finished game online</li>
+            <li>Submit a working game</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Need help?</h3>
+          <p>Join <a href="https://hackclub.enterprise.slack.com/archives/C0B72VAHXHB" target="_blank" rel="noopener noreferrer">#arcade-ysws</a> in the Hack Club Slack to ask questions, share progress, and get help from the community.</p>
+          <p>Running a workshop? The <a href="https://www.canva.com/design/DAHLJIkIras/yFGuUKuNm_g_faqWocFEzg/view" target="_blank" rel="noopener noreferrer">Arcade Guide</a> has the session plan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLUBS ============ -->
+  <section class="clubs" id="clubs">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Choose your path</p>
+        <h2>ArcadAI for Clubs</h2>
+        <p>ArcadAI is a Hack Club program where you and your members build games and get rewarded. Run it as a workshop at your next meeting. No experience needed, and it works for complete beginners. Clubs are welcome from anywhere in the world!</p>
+      </div>
+
+      <div class="clubs-grid">
+        <div class="clubs-main">
+          <div class="perks">
+            <h3>Club perks &amp; grants</h3>
+            <p>Fund your club dynamic! Every approved game submission contributes a solid <strong>$5 grant</strong> directly toward your club's custom event ecosystem. Use your collective pile to fund an awesome <strong>pizza party</strong>, restock premium <strong>snacks</strong>, or request custom board games and gear! Specify your group goals directly in the workshop setup form.</p>
+            <a class="btn btn-yellow" href="https://www.canva.com/design/DAHLJIkIras/yFGuUKuNm_g_faqWocFEzg/view" target="_blank" rel="noopener noreferrer">Arcade Guide »</a>
+          </div>
+
+          <h3 class="sub">Running a workshop</h3>
+          <p>Host an ArcadAI workshop at your club meeting. Members will build their own game using an AI (as per the guide), host it on GitHub Pages, and submit it. Each approved submission earns them rewards. Use our <a href="https://www.canva.com/design/DAHLJIkIras/yFGuUKuNm_g_faqWocFEzg/view" target="_blank" rel="noopener noreferrer">workshop guide</a> to run the session.</p>
+
+          <h3 class="sub">How it works</h3>
+          <ol class="mini-steps">
+            <li><span aria-hidden="true">1</span>Run the workshop with your club</li>
+            <li><span aria-hidden="true">2</span>Members build &amp; host their games</li>
+            <li><span aria-hidden="true">3</span>Close your workshop session</li>
+            <li><span aria-hidden="true">4</span>Get your collective reward grant!</li>
+          </ol>
+
+          <!-- TODO: confirm the workshop form. forms.hackclub.com/host-arcadai-workshop returned 404 on 2026-10-08. -->
+          <a class="btn btn-primary" href="https://forms.hackclub.com/host-arcadai-workshop" target="_blank" rel="noopener noreferrer">Start a Club Workshop »</a>
+        </div>
+
+        <aside class="clubs-side">
+          <img src="assets/claw-machine.webp" alt="An ArcadAI claw machine full of Orpheus plushies" width="900" height="1222" loading="lazy">
+          <div class="panel solo">
+            <h3>Building solo?</h3>
+            <p>No club needed. Follow the three steps, ship your game, and submit it as an individual.</p>
+            <a class="btn btn-ghost btn-sm" href="#step-1">Start with step 1</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXAMPLES ============ -->
+  <section class="examples" id="examples">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Made with ArcadAI</p>
+        <h2>Games people shipped.</h2>
+        <p>Real submissions from ArcadAI builders. Every one of them is plain HTML, CSS and JavaScript. Play them, then read the source.</p>
+      </div>
+
+      <div class="example-grid">
+        <article class="example-card">
+          <img src="assets/covers/ghostcatcher.webp" alt="GhostCatcher screenshot" width="800" height="462" loading="lazy">
+          <div class="example-body">
+            <h3>GhostCatcher</h3>
+            <p class="by">by Koushik Raj</p>
+            <p>Catch ghosts, survive the chaos, and rack up the highest score in this fast-paced arcade game.</p>
+            <div class="example-links">
+              <a class="btn btn-primary btn-xs" href="https://ghost-catcher-flax.vercel.app/" target="_blank" rel="noopener noreferrer">Play</a>
+              <a class="btn btn-ghost btn-xs" href="https://github.com/koushikrajd2011-rgb/GhostCatcher" target="_blank" rel="noopener noreferrer">Source</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="example-card">
+          <img src="assets/covers/starshooter.webp" alt="StarShooter screenshot" width="800" height="363" loading="lazy">
+          <div class="example-body">
+            <h3>StarShooter</h3>
+            <p class="by">by Arnav Nandurkar</p>
+            <p>Blast through waves of enemies in this classic space shooter.</p>
+            <div class="example-links">
+              <a class="btn btn-primary btn-xs" href="https://arnavnandurkar.github.io/starshooter/" target="_blank" rel="noopener noreferrer">Play</a>
+              <a class="btn btn-ghost btn-xs" href="https://github.com/arnavnandurkar/starshooter/" target="_blank" rel="noopener noreferrer">Source</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="example-card">
+          <img src="assets/covers/67.webp" alt="67 screenshot" width="800" height="412" loading="lazy">
+          <div class="example-body">
+            <h3>67</h3>
+            <p class="by">by Will Kitch (@glimmercharger)</p>
+            <p>A chaotic little arcade game where everything is 67. Score points, keep your HP up, survive.</p>
+            <div class="example-links">
+              <a class="btn btn-primary btn-xs" href="https://glimmercharger.github.io/67-arcadAI/" target="_blank" rel="noopener noreferrer">Play</a>
+              <a class="btn btn-ghost btn-xs" href="https://github.com/glimmercharger/67-arcadAI" target="_blank" rel="noopener noreferrer">Source</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="example-card">
+          <img src="assets/covers/arcade-demo.webp" alt="Arcade Demo screenshot" width="800" height="390" loading="lazy">
+          <div class="example-body">
+            <h3>Arcade Demo</h3>
+            <p class="by">by Aditya (@agm)</p>
+            <p>A playable demo of what you can build with structural HTML, layout CSS and a basic JavaScript game loop.</p>
+            <div class="example-links">
+              <a class="btn btn-primary btn-xs" href="https://aditya-gamer011.github.io/Arcade-Demo/" target="_blank" rel="noopener noreferrer">Play</a>
+              <a class="btn btn-ghost btn-xs" href="https://github.com/Aditya-Gamer011/Arcade-Demo" target="_blank" rel="noopener noreferrer">Source</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p class="examples-more">Shipped yours? Share it in the <a href="https://hackclub.enterprise.slack.com/archives/C0B72VAHXHB" target="_blank" rel="noopener noreferrer">Slack channel</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="faq" id="faq">
+    <div class="container">
+     <div class="faq-inner">
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions, answered.</h2>
+      </div>
+      <details>
+        <summary>Do I need to know how to code?</summary>
+        <p>No. Step 1 needs zero code: the AI writes it. Steps 2 and 3 teach you by changing code that already works, which is the fastest way to learn.</p>
+      </details>
+      <details>
+        <summary>Which AI tool should I use?</summary>
+        <p>Whatever you already have. ChatGPT, Claude, Gemini and Copilot all work. Write down which one you used. It's part of your step-1 submission.</p>
+      </details>
+      <details>
+        <summary>Why HTML, CSS and JavaScript?</summary>
+        <p>Because you can read every line, change it with any text editor, and put it online for free on GitHub Pages. No engine to install, no licence, nothing to export.</p>
+      </details>
+      <details>
+        <summary>How long does it take?</summary>
+        <p>A club workshop gets most people through step 1 in a single session. Steps 2 and 3 are yours to pace. Keep Hackatime running the whole time so your hours count.</p>
+      </details>
+      <details>
+        <summary>I'm stuck.</summary>
+        <p>Ask in <a href="https://hackclub.enterprise.slack.com/archives/C0B72VAHXHB" target="_blank" rel="noopener noreferrer">#arcade-ysws</a> on the Hack Club Slack. Someone there has hit the same bug.</p>
+      </details>
+     </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="brand" href="#top">ARCAD<span>AI</span></a>
+      <p>A program by <a href="https://hackclub.com/" target="_blank" rel="noopener noreferrer">Hack Club</a>, a 501(c)(3) nonprofit and a global network of high school coders and makers.</p>
+      <p class="footer-small">This site is plain HTML, CSS and JavaScript too. <a href="https://github.com/hackclub/arcadai" target="_blank" rel="noopener noreferrer">Source on GitHub</a>.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#how">How it works</a>
+      <a href="#rules">Rules</a>
+      <a href="#clubs">Clubs</a>
+      <a href="#examples">Examples</a>
+      <a href="https://www.canva.com/design/DAHLJIkIras/yFGuUKuNm_g_faqWocFEzg/view" target="_blank" rel="noopener noreferrer">Guide</a>
+      <a href="https://hackclub.com/slack/" target="_blank" rel="noopener noreferrer">Slack</a>
+      <a href="https://hackatime.hackclub.com/" target="_blank" rel="noopener noreferrer">Hackatime</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
